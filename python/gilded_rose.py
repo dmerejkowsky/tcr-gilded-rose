@@ -93,6 +93,9 @@ class Strategy:
     def less_than_ten_days(self):
         return self.item.sell_in < 11
 
+    def less_than_five_days(self):
+        return self.item.sell_in < 6
+
 
 class Legendary(Strategy):
     def run(self):
@@ -105,7 +108,7 @@ class BackstagePass(Strategy):
         self.increase_quality()
         if self.less_than_ten_days():
             self.increase_quality()
-        if item.sell_in < 6:
+        if self.less_than_five_days():
             self.increase_quality()
         item.sell_in -= 1
         if item.sell_in < 0:
