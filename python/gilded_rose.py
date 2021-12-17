@@ -111,12 +111,10 @@ class BackstagePass(Strategy):
 class IncreasesOverTime(Strategy):
     def run(self):
         item = self.item
-        if self.get_quality() < 50:
-            self.update_quality(+1)
+        self.update_quality_but_below_fifty()
         item.sell_in -= 1
         if item.sell_in < 0:
-            if self.get_quality() < 50:
-                self.update_quality(+1)
+            self.update_quality_but_below_fifty()
 
 
 class Default(Strategy):
