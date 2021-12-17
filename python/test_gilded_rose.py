@@ -9,3 +9,4 @@ def test_main(capsys):
     assert not err
     golden_text = Path("../golden-master/expected-output.txt")
     assert out == golden_text.read_text()
+

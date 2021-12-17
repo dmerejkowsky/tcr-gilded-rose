@@ -51,32 +51,39 @@ class QualityTracker:
     def is_backstage_pass(self):
         return "Backstage pass" in self.item.name
 
+    def is_legendary(self):
+        # Note: more items may be legendary, but for the moment we only
+        # know about this one
+        return "Sulfuras" in self.item.name
+
+    def increases_over_time(self):
+        # Note: more items may be increase quality over time, but for the moment we only
+        # know about this one
+        return "Aged Brie" in self.item.name
+
     def update(self):
         item = self.item
-        if (
-            item.name != "Aged Brie"
-            and item.name != "Backstage passes to a TAFKAL80ETC concert"
-        ):
+        if not self.increases_over_time() and not self.is_backstage_pass():
             if item.quality > 0:
-                if item.name != "Sulfuras, Hand of Ragnaros":
+                if not self.is_legendary():
                     item.quality = item.quality - 1
         else:
             if item.quality < 50:
                 item.quality = item.quality + 1
-                if item.name == "Backstage passes to a TAFKAL80ETC concert":
+                if self.is_backstage_pass():
                     if item.sell_in < 11:
                         if item.quality < 50:
                             item.quality = item.quality + 1
                     if item.sell_in < 6:
                         if item.quality < 50:
                             item.quality = item.quality + 1
-        if item.name != "Sulfuras, Hand of Ragnaros":
+        if not self.is_legendary():
             item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
-            if item.name != "Aged Brie":
-                if item.name != "Backstage passes to a TAFKAL80ETC concert":
+            if not self.increases_over_time():
+                if not self.is_backstage_pass():
                     if item.quality > 0:
-                        if item.name != "Sulfuras, Hand of Ragnaros":
+                        if not self.is_legendary():
                             item.quality = item.quality - 1
                 else:
                     item.quality = item.quality - item.quality
