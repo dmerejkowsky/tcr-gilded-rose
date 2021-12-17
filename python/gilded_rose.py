@@ -40,8 +40,36 @@ class GildedRose:
 
     def update_quality(self):
         for item in self.items:
-            quality_tracker = QualityTracker(item)
-            quality_tracker.update()
+            strategy = get_strategy(item)
+            strategy.run()
+
+
+def is_backstage_pass(item):
+    return "Backstage pass" in item.name
+
+
+def is_legendary(item):
+    # Note: more items may be legendary, but for the moment we only
+    # know about this one
+    return "Sulfuras" in item.name
+
+
+def increases_over_time(item):
+    # Note: more items may be increase quality over time, but for the moment we only
+    # know about this one
+    return "Aged Brie" in item.name
+
+
+def get_strategy(item):
+    if is_legendary(item):
+        strategy = Legendary(item)
+    elif is_backstage_pass(item):
+        strategy = BackstagePass(item)
+    elif increases_over_time(item):
+        strategy = IncreasesOverTime(item)
+    else:
+        strategy = Default(item)
+    return strategy
 
 
 class Legendary:
