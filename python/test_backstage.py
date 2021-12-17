@@ -1,0 +1,8 @@
+from gilded_rose import BackstagePass, Item
+
+
+def test_at_start():
+    item = Item(name="Backstage pass", quality=10, sell_in=20)
+    strategy = BackstagePass(item)
+    strategy.update_quality()
+    assert item.quality == 11
