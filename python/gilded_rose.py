@@ -83,7 +83,7 @@ class Strategy:
     def get_quality(self):
         return self.item.quality
 
-    def increase_quality_by(self):
+    def increase_quality_by_one(self):
         if self.get_quality() < 50:
             self.item.quality += 1
 
@@ -115,22 +115,22 @@ class Legendary(Strategy):
 
 class BackstagePass(Strategy):
     def update_quality(self):
-        self.increase_quality_by()
+        self.increase_quality_by_one()
         if self.less_than_ten_days():
             # + 2
-            self.increase_quality_by()
+            self.increase_quality_by_one()
         if self.less_than_five_days():
             # + 3
-            self.increase_quality_by()
+            self.increase_quality_by_one()
         if self.out_of_date():
             self.reset_quality()
 
 
 class IncreasesOverTime(Strategy):
     def update_quality(self):
-        self.increase_quality_by()
+        self.increase_quality_by_one()
         if self.out_of_date():
-            self.increase_quality_by()
+            self.increase_quality_by_one()
 
 
 class Default(Strategy):
