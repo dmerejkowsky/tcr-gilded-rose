@@ -127,34 +127,5 @@ class Default:
                 item.quality -= 1
 
 
-class QualityTracker:
-    def __init__(self, item):
-        self.item = item
-
-    def is_backstage_pass(self):
-        return "Backstage pass" in self.item.name
-
-    def is_legendary(self):
-        # Note: more items may be legendary, but for the moment we only
-        # know about this one
-        return "Sulfuras" in self.item.name
-
-    def increases_over_time(self):
-        # Note: more items may be increase quality over time, but for the moment we only
-        # know about this one
-        return "Aged Brie" in self.item.name
-
-    def update(self):
-        if self.is_legendary():
-            strategy = Legendary(self.item)
-        elif self.is_backstage_pass():
-            strategy = BackstagePass(self.item)
-        elif self.increases_over_time():
-            strategy = IncreasesOverTime(self.item)
-        else:
-            strategy = Default(self.item)
-        strategy.run()
-
-
 if __name__ == "__main__":
     main()
