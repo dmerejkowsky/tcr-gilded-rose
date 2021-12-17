@@ -104,16 +104,14 @@ class QualityTracker:
             if item.quality > 0:
                 item.quality -= 1
         else:
-            if item.quality < 50:
-                item.quality += 1
+            pass
         item.sell_in -= 1
         if item.sell_in < 0:
             if True:
                 if item.quality > 0:
                     item.quality -= 1
             else:
-                if item.quality < 50:
-                    item.quality += 1
+                pass
 
 
 if __name__ == "__main__":
