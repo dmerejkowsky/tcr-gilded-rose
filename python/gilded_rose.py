@@ -23,8 +23,7 @@ def main():
 
     gilded_rose = GildedRose(items)
 
-    days = 30
-    for day in range(days):
+    for day in range(0, 31):
         print("-------- day %s --------" % day)
         print("name, sellIn, quality")
         for item in items:
@@ -33,7 +32,7 @@ def main():
         gilded_rose.update_quality()
 
 
-class GildedRose(object):
+class GildedRose:
     def __init__(self, items):
         self.items = items
 
