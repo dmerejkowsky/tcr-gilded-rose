@@ -72,7 +72,11 @@ def get_strategy(item):
     return strategy
 
 
-class Legendary:
+class Strategy:
+    pass
+
+
+class Legendary(Strategy):
     def __init__(self, item):
         self.item = item
 
@@ -80,7 +84,7 @@ class Legendary:
         pass
 
 
-class BackstagePass:
+class BackstagePass(Strategy):
     def __init__(self, item):
         self.item = item
 
@@ -99,7 +103,7 @@ class BackstagePass:
             item.quality = 0
 
 
-class IncreasesOverTime:
+class IncreasesOverTime(Strategy):
     def __init__(self, item):
         self.item = item
 
@@ -113,7 +117,7 @@ class IncreasesOverTime:
                 item.quality += 1
 
 
-class Default:
+class Default(Strategy):
     def __init__(self, item):
         self.item = item
 
