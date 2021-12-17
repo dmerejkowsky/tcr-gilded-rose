@@ -40,9 +40,16 @@ class GildedRose:
 
     def update_quality(self):
         for item in self.items:
-            self._update_item_quality(item)
+            quality_tracker = QualityTracker(item)
+            quality_tracker.update()
 
-    def _update_item_quality(self, item):
+
+class QualityTracker:
+    def __init__(self, item):
+        self.item = item
+
+    def update(self):
+        item = self.item
         if (
             item.name != "Aged Brie"
             and item.name != "Backstage passes to a TAFKAL80ETC concert"
