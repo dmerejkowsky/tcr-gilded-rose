@@ -67,8 +67,9 @@ class QualityTracker:
 
         if self.is_backstage_pass():
             self.handle_backstage_pass()
-        else:
-            self.handle_other()
+            return
+
+        self.handle_other()
 
     def handle_backstage_pass(self):
         item = self.item
