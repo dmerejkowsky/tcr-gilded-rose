@@ -119,13 +119,12 @@ class Legendary(Strategy):
 
 class BackstagePass(Strategy):
     def update_quality(self):
-        self.increase_quality_by_one()
+        self.increase_quality_by(1)
         if self.less_than_ten_days():
-            # + 2
-            self.increase_quality_by_one()
+            self.increase_quality_by(1)
         if self.less_than_five_days():
             # + 3
-            self.increase_quality_by_one()
+            self.increase_quality_by(1)
         if self.out_of_date():
             self.reset_quality()
 
