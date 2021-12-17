@@ -137,7 +137,7 @@ class Default(Strategy):
     def update_quality(self):
         item = self.item
         self.decrease_quality()
-        if item.sell_in < 0:
+        if self.out_of_date():
             self.decrease_quality()
 
 
