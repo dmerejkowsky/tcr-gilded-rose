@@ -118,8 +118,8 @@ class BackstagePass(Strategy):
 class IncreasesOverTime(Strategy):
     def run(self):
         item = self.item
-        self.increase_quality()
         item.sell_in -= 1
+        self.increase_quality()
         if item.sell_in < 0:
             self.increase_quality()
 
