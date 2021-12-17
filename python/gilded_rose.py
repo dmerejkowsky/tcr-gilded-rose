@@ -48,7 +48,7 @@ class Legendary:
     def __init__(self, item):
         self.item = item
 
-    def process(self):
+    def run(self):
         pass
 
 
@@ -71,6 +71,8 @@ class QualityTracker:
 
     def update(self):
         if self.is_legendary():
+            strategy = Legendary(self.item)
+            strategy.run()
             return
 
         if self.is_backstage_pass():
