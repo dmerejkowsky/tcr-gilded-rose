@@ -86,7 +86,7 @@ class QualityTracker:
 
     def handle_other(self):
         item = self.item
-        if not self.increases_over_time() and True:
+        if not self.increases_over_time():
             if item.quality > 0:
                 item.quality = item.quality - 1
         else:
