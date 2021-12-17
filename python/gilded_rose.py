@@ -91,10 +91,10 @@ class Strategy:
         self.item.quality = 0
 
     def less_than_ten_days(self):
-        return self.item.sell_in < 11
+        return self.item.sell_in <= 10
 
     def less_than_five_days(self):
-        return self.item.sell_in < 6
+        return self.item.sell_in <= 5
 
 
 class Legendary(Strategy):
