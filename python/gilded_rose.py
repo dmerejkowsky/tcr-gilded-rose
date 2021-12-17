@@ -85,7 +85,7 @@ class Strategy:
     def decrease_quality(self):
         self.item.quality -= 1
 
-    def update_quality_but_below_fifty(self):
+    def increase_quality(self):
         if self.get_quality() < 50:
             self.update_quality(+1)
 
@@ -108,11 +108,11 @@ class Legendary(Strategy):
 class BackstagePass(Strategy):
     def run(self):
         item = self.item
-        self.update_quality_but_below_fifty()
+        self.increase_quality()
         if item.sell_in < 11:
-            self.update_quality_but_below_fifty()
+            self.increase_quality()
         if item.sell_in < 6:
-            self.update_quality_but_below_fifty()
+            self.increase_quality()
         item.sell_in -= 1
         if item.sell_in < 0:
             self.reset_quality()
@@ -121,10 +121,10 @@ class BackstagePass(Strategy):
 class IncreasesOverTime(Strategy):
     def run(self):
         item = self.item
-        self.update_quality_but_below_fifty()
+        self.increase_quality()
         item.sell_in -= 1
         if item.sell_in < 0:
-            self.update_quality_but_below_fifty()
+            self.increase_quality()
 
 
 class Default(Strategy):
