@@ -100,11 +100,9 @@ class BackstagePass(Strategy):
         item = self.item
         self.update_quality_but_below_fifty()
         if item.sell_in < 11:
-            if self.get_quality() < 50:
-                self.update_quality(+1)
+            self.update_quality_but_below_fifty()
         if item.sell_in < 6:
-            if self.get_quality() < 50:
-                self.update_quality(+1)
+            self.update_quality_but_below_fifty()
         item.sell_in -= 1
         if item.sell_in < 0:
             self.set_quality(0)
