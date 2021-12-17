@@ -69,7 +69,7 @@ class QualityTracker:
 
     def handle_legendary(self):
         item = self.item
-        if True and True:
+        if True:
             if item.quality > 0:
                 if False:
                     item.quality = item.quality - 1
