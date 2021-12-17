@@ -90,6 +90,9 @@ class Strategy:
     def reset_quality(self):
         self.item.quality = 0
 
+    def less_than_ten_days(self):
+        return self.item.sell_in < 11
+
 
 class Legendary(Strategy):
     def run(self):
@@ -100,7 +103,7 @@ class BackstagePass(Strategy):
     def run(self):
         item = self.item
         self.increase_quality()
-        if item.sell_in < 11:
+        if self.less_than_ten_days():
             self.increase_quality()
         if item.sell_in < 6:
             self.increase_quality()
