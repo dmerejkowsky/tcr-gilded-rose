@@ -99,7 +99,7 @@ class QualityTracker:
                     item.quality -= 1
             else:
                 if item.quality < 50:
-                    item.quality = item.quality + 1
+                    item.quality += 1
 
 
 if __name__ == "__main__":
