@@ -131,8 +131,10 @@ class BackstagePass(Strategy):
 
 class IncreasesOverTime(Strategy):
     def update_quality(self):
-        self.increase_quality_by(1)
         if self.out_of_date():
+            self.increase_quality_by(1)
+            self.increase_quality_by(1)
+        else:
             self.increase_quality_by(1)
 
 
