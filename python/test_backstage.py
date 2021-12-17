@@ -27,3 +27,10 @@ def test_out_of_date():
     strategy = BackstagePass(item)
     strategy.update_quality()
     assert item.quality == 0
+
+
+def test_does_not_go_above_fifty():
+    item = Item(name="Backstage pass", quality=49, sell_in=20)
+    strategy = BackstagePass(item)
+    strategy.update_quality()
+    assert item.quality == 50
