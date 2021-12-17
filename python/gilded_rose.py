@@ -76,6 +76,10 @@ class Strategy:
     def __init__(self, item):
         self.item = item
 
+    @property
+    def quality(self):
+        return self.item
+
 
 class Legendary(Strategy):
     def run(self):
