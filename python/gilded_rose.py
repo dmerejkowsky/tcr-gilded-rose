@@ -67,7 +67,7 @@ def get_strategy(item):
     elif is_backstage_pass(item):
         strategy = BackstagePass(item)
     elif increases_over_time(item):
-        strategy = IncreasesOverTime(item)
+        strategy = Increasing(item)
     else:
         strategy = Default(item)
     return strategy
@@ -129,7 +129,7 @@ class BackstagePass(Strategy):
             self.increase_quality_by(1)
 
 
-class IncreasesOverTime(Strategy):
+class Increasing(Strategy):
     def update_quality(self):
         if self.out_of_date():
             self.increase_quality_by(2)
