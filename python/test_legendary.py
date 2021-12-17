@@ -1,4 +1,4 @@
-from gilded_rose import Legendary, Item, update_and_clamp
+from gilded_rose import Item, Legendary
 
 
 def test_never_changes():

@@ -1,4 +1,4 @@
-from gilded_rose import Increasing, Item, update_and_clamp
+from gilded_rose import Increasing, Item
 
 
 def test_increase_by_one_before_selling_time():

@@ -8,8 +8,10 @@ authors = ["Dimitri Merejkowsky <dimitri@dmerej.info>"]
 python = "^3.9"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
 black = "^21.12b0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+pytest = "^6.2.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

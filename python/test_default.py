@@ -1,4 +1,4 @@
-from gilded_rose import Default, Item, update_and_clamp
+from gilded_rose import Default, Item
 
 
 def test_at_start():
