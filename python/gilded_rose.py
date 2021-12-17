@@ -99,10 +99,10 @@ class Strategy:
         self.item.quality = 0
 
     def less_than_ten_days(self):
-        return self.item.sell_in < 10
+        return 5 <= self.item.sell_in < 10
 
     def less_than_five_days(self):
-        return self.item.sell_in < 5
+        return 0 <= self.item.sell_in < 5
 
     def out_of_date(self):
         return self.item.sell_in < 0
@@ -119,14 +119,14 @@ class Legendary(Strategy):
 
 class BackstagePass(Strategy):
     def update_quality(self):
-        self.increase_quality_by(1)
         if self.less_than_ten_days():
-            self.increase_quality_by(1)
-        if self.less_than_five_days():
-            # + 3
-            self.increase_quality_by(1)
-        if self.out_of_date():
+            self.increase_quality_by(2)
+        elif self.less_than_five_days():
+            self.increase_quality_by(3)
+        elif self.out_of_date():
             self.reset_quality()
+        else:
+            self.increase_quality_by(1)
 
 
 class IncreasesOverTime(Strategy):
