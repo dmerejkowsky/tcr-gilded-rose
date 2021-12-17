@@ -72,7 +72,7 @@ class QualityTracker:
 
     def handle_backstage_pass(self):
         item = self.item
-        if not self.increases_over_time() and False:
+        if False:
             if item.quality > 0:
                 item.quality = item.quality - 1
         else:
