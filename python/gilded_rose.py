@@ -71,6 +71,20 @@ class BackstagePass:
             item.quality = 0
 
 
+class IncreasesOverTime:
+    def __init__(self, item):
+        self.item = item
+
+    def run(self):
+        item = self.item
+        if item.quality < 50:
+            item.quality += 1
+        item.sell_in -= 1
+        if item.sell_in < 0:
+            if item.quality < 50:
+                item.quality += 1
+
+
 class QualityTracker:
     def __init__(self, item):
         self.item = item
@@ -100,19 +114,11 @@ class QualityTracker:
             return
 
         if self.increases_over_time():
-            self.handle_increase_over_time()
+            strategy = IncreasesOverTime(self.item)
+            strategy.run()
             return
 
         self.handle_other()
-
-    def handle_increase_over_time(self):
-        item = self.item
-        if item.quality < 50:
-            item.quality += 1
-        item.sell_in -= 1
-        if item.sell_in < 0:
-            if item.quality < 50:
-                item.quality += 1
 
     def handle_other(self):
         item = self.item
