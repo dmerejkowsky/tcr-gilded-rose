@@ -82,16 +82,13 @@ class Strategy:
     def update_quality(self, increment):
         self.item.quality += increment
 
-    def decrease_quality(self):
-        self.item.quality -= 1
-
     def increase_quality(self):
         if self.get_quality() < 50:
             self.update_quality(+1)
 
     def decrease_quality_but_not_below_zero(self):
         if self.get_quality() > 0:
-            self.decrease_quality()
+            self.item.quality -= 1
 
     def set_quality(self, value):
         self.item.quality = 0
