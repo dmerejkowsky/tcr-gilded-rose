@@ -41,6 +41,7 @@ class GildedRose:
     def update_quality(self):
         for item in self.items:
             strategy = get_strategy(item)
+            strategy.age()
             strategy.run()
 
 
@@ -77,7 +78,7 @@ class Strategy:
         self.item = item
 
     def age(self):
-        self.sell_in -= 1
+        self.item.sell_in -= 1
 
     def get_quality(self):
         return self.item.quality
@@ -104,11 +105,14 @@ class Legendary(Strategy):
     def run(self):
         pass
 
+    def age(self):
+        # Note: override default aging method
+        pass
+
 
 class BackstagePass(Strategy):
     def run(self):
         item = self.item
-        item.sell_in -= 1
         self.increase_quality()
         if self.less_than_ten_days():
             self.increase_quality()
@@ -121,7 +125,6 @@ class BackstagePass(Strategy):
 class IncreasesOverTime(Strategy):
     def run(self):
         item = self.item
-        item.sell_in -= 1
         self.increase_quality()
         if item.sell_in < 0:
             self.increase_quality()
@@ -130,7 +133,6 @@ class IncreasesOverTime(Strategy):
 class Default(Strategy):
     def run(self):
         item = self.item
-        item.sell_in -= 1
         self.decrease_quality()
         if item.sell_in < 0:
             self.decrease_quality()
