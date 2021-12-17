@@ -117,8 +117,10 @@ class BackstagePass(Strategy):
     def update_quality(self):
         self.increase_quality()
         if self.less_than_ten_days():
+            # + 2
             self.increase_quality()
         if self.less_than_five_days():
+            # + 3
             self.increase_quality()
         if self.out_of_date():
             self.reset_quality()
