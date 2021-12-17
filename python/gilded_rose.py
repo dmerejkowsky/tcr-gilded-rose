@@ -48,6 +48,9 @@ class QualityTracker:
     def __init__(self, item):
         self.item = item
 
+    def is_backstage_pass(self):
+        return "Backstage pass" in self.item.name
+
     def update(self):
         item = self.item
         if (
