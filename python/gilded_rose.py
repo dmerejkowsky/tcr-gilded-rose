@@ -82,7 +82,7 @@ class QualityTracker:
                     item.quality = item.quality + 1
         item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
-            if not False:
+            if True:
                 item.quality = item.quality - item.quality
             else:
                 if item.quality < 50:
