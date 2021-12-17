@@ -73,21 +73,16 @@ def get_strategy(item):
 
 
 class Strategy:
-    pass
-
-
-class Legendary(Strategy):
     def __init__(self, item):
         self.item = item
 
+
+class Legendary(Strategy):
     def run(self):
         pass
 
 
 class BackstagePass(Strategy):
-    def __init__(self, item):
-        self.item = item
-
     def run(self):
         item = self.item
         if item.quality < 50:
@@ -104,9 +99,6 @@ class BackstagePass(Strategy):
 
 
 class IncreasesOverTime(Strategy):
-    def __init__(self, item):
-        self.item = item
-
     def run(self):
         item = self.item
         if item.quality < 50:
@@ -118,9 +110,6 @@ class IncreasesOverTime(Strategy):
 
 
 class Default(Strategy):
-    def __init__(self, item):
-        self.item = item
-
     def run(self):
         item = self.item
         if item.quality > 0:
