@@ -119,20 +119,12 @@ class QualityTracker:
     def update(self):
         if self.is_legendary():
             strategy = Legendary(self.item)
-            strategy.run()
-            return
-
-        if self.is_backstage_pass():
+        elif self.is_backstage_pass():
             strategy = BackstagePass(self.item)
-            strategy.run()
-            return
-
-        if self.increases_over_time():
+        elif self.increases_over_time():
             strategy = IncreasesOverTime(self.item)
-            strategy.run()
-            return
-
-        strategy = Default(self.item)
+        else:
+            strategy = Default(self.item)
         strategy.run()
 
 
