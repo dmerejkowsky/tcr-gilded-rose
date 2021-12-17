@@ -50,3 +50,7 @@ def update_and_clamp(x, y):
 
 def test_update_and_clamp():
     assert update_and_clamp(49, 3) == 50
+
+
+def test_update_and_clamp():
+    assert update_and_clamp(46, 3) == 49
