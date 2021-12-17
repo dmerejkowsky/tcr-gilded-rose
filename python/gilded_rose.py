@@ -86,7 +86,7 @@ class Strategy:
         if self.get_quality() < 50:
             self.update_quality(+1)
 
-    def decrease_quality_but_not_below_zero(self):
+    def decrease_quality(self):
         if self.get_quality() > 0:
             self.item.quality -= 1
 
@@ -127,10 +127,10 @@ class IncreasesOverTime(Strategy):
 class Default(Strategy):
     def run(self):
         item = self.item
-        self.decrease_quality_but_not_below_zero()
+        self.decrease_quality()
         item.sell_in -= 1
         if item.sell_in < 0:
-            self.decrease_quality_but_not_below_zero()
+            self.decrease_quality()
 
 
 if __name__ == "__main__":
