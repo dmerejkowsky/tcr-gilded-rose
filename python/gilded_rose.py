@@ -52,6 +52,25 @@ class Legendary:
         pass
 
 
+class BackstagePass:
+    def __init__(self, item):
+        self.item = item
+
+    def run(self):
+        item = self.item
+        if item.quality < 50:
+            item.quality += 1
+            if item.sell_in < 11:
+                if item.quality < 50:
+                    item.quality += 1
+            if item.sell_in < 6:
+                if item.quality < 50:
+                    item.quality += 1
+        item.sell_in -= 1
+        if item.sell_in < 0:
+            item.quality = 0
+
+
 class QualityTracker:
     def __init__(self, item):
         self.item = item
@@ -76,7 +95,8 @@ class QualityTracker:
             return
 
         if self.is_backstage_pass():
-            self.handle_backstage_pass()
+            strategy = BackstagePass(self.item)
+            strategy.run()
             return
 
         if self.increases_over_time():
@@ -84,20 +104,6 @@ class QualityTracker:
             return
 
         self.handle_other()
-
-    def handle_backstage_pass(self):
-        item = self.item
-        if item.quality < 50:
-            item.quality += 1
-            if item.sell_in < 11:
-                if item.quality < 50:
-                    item.quality += 1
-            if item.sell_in < 6:
-                if item.quality < 50:
-                    item.quality += 1
-        item.sell_in -= 1
-        if item.sell_in < 0:
-            item.quality = 0
 
     def handle_increase_over_time(self):
         item = self.item
