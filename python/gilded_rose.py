@@ -85,6 +85,20 @@ class IncreasesOverTime:
                 item.quality += 1
 
 
+class Default:
+    def __init__(self, item):
+        self.item = item
+
+    def run(self):
+        item = self.item
+        if item.quality > 0:
+            item.quality -= 1
+        item.sell_in -= 1
+        if item.sell_in < 0:
+            if item.quality > 0:
+                item.quality -= 1
+
+
 class QualityTracker:
     def __init__(self, item):
         self.item = item
@@ -118,16 +132,8 @@ class QualityTracker:
             strategy.run()
             return
 
-        self.handle_other()
-
-    def handle_other(self):
-        item = self.item
-        if item.quality > 0:
-            item.quality -= 1
-        item.sell_in -= 1
-        if item.sell_in < 0:
-            if item.quality > 0:
-                item.quality -= 1
+        strategy = Default(self.item)
+        strategy.run()
 
 
 if __name__ == "__main__":
