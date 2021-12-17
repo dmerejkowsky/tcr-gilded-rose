@@ -130,8 +130,7 @@ class Default(Strategy):
         self.decrease_quality_but_not_below_zero()
         item.sell_in -= 1
         if item.sell_in < 0:
-            if self.get_quality() > 0:
-                self.decrease_quality()
+            self.decrease_quality_but_not_below_zero()
 
 
 if __name__ == "__main__":
