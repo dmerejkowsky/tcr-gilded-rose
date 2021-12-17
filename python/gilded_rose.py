@@ -63,16 +63,9 @@ class QualityTracker:
 
     def update(self):
         if self.is_legendary():
-            self.handle_legendary()
-        else:
-            self.handle_other()
+            return
 
-    def handle_legendary(self):
-        item = self.item
-        if item.quality > 0:
-            pass
-        if item.sell_in < 0:
-            pass
+        self.handle_other()
 
     def handle_other(self):
         item = self.item
