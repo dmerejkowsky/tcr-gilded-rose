@@ -69,6 +69,10 @@ class QualityTracker:
             self.handle_backstage_pass()
             return
 
+        if self.increases_over_time():
+            self.handle_other()
+            return
+
         self.handle_other()
 
     def handle_backstage_pass(self):
