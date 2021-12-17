@@ -1,4 +1,4 @@
-from gilded_rose import BackstagePass, Item
+from gilded_rose import BackstagePass, Item, update_and_clamp
 
 
 def test_at_start():
@@ -41,11 +41,6 @@ def test_does_not_go_above_fifty_when_less_than_ten():
     strategy = BackstagePass(item)
     strategy.update_quality()
     assert item.quality == 50
-
-
-def update_and_clamp(x, y):
-    res = x + y
-    return min(res, 50)
 
 
 def test_update_and_clamp():
