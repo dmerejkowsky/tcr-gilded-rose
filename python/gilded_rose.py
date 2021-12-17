@@ -127,8 +127,8 @@ class IncreasesOverTime(Strategy):
 class Default(Strategy):
     def run(self):
         item = self.item
-        self.decrease_quality()
         item.sell_in -= 1
+        self.decrease_quality()
         if item.sell_in < 0:
             self.decrease_quality()
 
