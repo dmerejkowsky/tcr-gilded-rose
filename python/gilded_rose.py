@@ -76,6 +76,9 @@ class Strategy:
     def __init__(self, item):
         self.item = item
 
+    def age(self):
+        self.sell_in -= 1
+
     def get_quality(self):
         return self.item.quality
 
