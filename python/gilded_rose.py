@@ -76,11 +76,11 @@ class Strategy:
     def __init__(self, item):
         self.item = item
 
-    def quality(self):
-        return self.item
+    def get_quality(self):
+        return self.item.quality
 
-    def set_quality(self, value):
-        self.item.quality = value
+    def update_quality(self, increment):
+        self.item.quality += increment
 
 
 class Legendary(Strategy):
@@ -107,8 +107,8 @@ class BackstagePass(Strategy):
 class IncreasesOverTime(Strategy):
     def run(self):
         item = self.item
-        if item.quality < 50:
-            item.quality += 1
+        if self.get_quality() < 50:
+            self.update_quality(+1)
         item.sell_in -= 1
         if item.sell_in < 0:
             if item.quality < 50:
