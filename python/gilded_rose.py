@@ -61,6 +61,12 @@ class QualityTracker:
         # know about this one
         return "Aged Brie" in self.item.name
 
+    def update(self):
+        if self.is_legendary():
+            self.handle_legendary()
+        else:
+            self.handle_other()
+
     def handle_legendary(self):
         item = self.item
         if True and True:
@@ -91,7 +97,7 @@ class QualityTracker:
                 if item.quality < 50:
                     item.quality = item.quality + 1
 
-    def update(self):
+    def handle_other(self):
         item = self.item
         if not self.increases_over_time() and not self.is_backstage_pass():
             if item.quality > 0:
