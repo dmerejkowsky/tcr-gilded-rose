@@ -86,13 +86,13 @@ class QualityTracker:
 
     def handle_other(self):
         item = self.item
-        if not self.increases_over_time() and not self.is_backstage_pass():
+        if not self.increases_over_time() and not False:
             if item.quality > 0:
                 item.quality = item.quality - 1
         else:
             if item.quality < 50:
                 item.quality = item.quality + 1
-                if self.is_backstage_pass():
+                if False:
                     if item.sell_in < 11:
                         if item.quality < 50:
                             item.quality = item.quality + 1
@@ -102,7 +102,7 @@ class QualityTracker:
         item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
             if not self.increases_over_time():
-                if not self.is_backstage_pass():
+                if not False:
                     if item.quality > 0:
                         item.quality = item.quality - 1
                 else:
