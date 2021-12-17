@@ -13,3 +13,10 @@ def test_less_than_ten():
     strategy = BackstagePass(item)
     strategy.update_quality()
     assert item.quality == 12
+
+
+def test_less_than_five():
+    item = Item(name="Backstage pass", quality=10, sell_in=4)
+    strategy = BackstagePass(item)
+    strategy.update_quality()
+    assert item.quality == 13
