@@ -83,6 +83,10 @@ class Strategy:
     def get_quality(self):
         return self.item.quality
 
+    def increase_quality_by(self, value):
+        if self.get_quality() < 50:
+            self.item.quality += value
+
     def increase_quality_by_one(self):
         if self.get_quality() < 50:
             self.item.quality += 1
