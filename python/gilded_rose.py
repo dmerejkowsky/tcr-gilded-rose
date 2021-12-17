@@ -128,7 +128,7 @@ class Default(Strategy):
         item.sell_in -= 1
         if item.sell_in < 0:
             if self.get_quality() > 0:
-                self.update_quality(-1)
+                self.decrease_quality()
 
 
 if __name__ == "__main__":
