@@ -44,6 +44,14 @@ class GildedRose:
             quality_tracker.update()
 
 
+class Legendary:
+    def __init__(self, item):
+        self.item = item
+
+    def process(self):
+        pass
+
+
 class QualityTracker:
     def __init__(self, item):
         self.item = item
