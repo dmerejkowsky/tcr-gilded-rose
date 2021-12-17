@@ -73,6 +73,11 @@ def get_strategy(item):
     return strategy
 
 
+def update_and_clamp(x, y):
+    res = x + y
+    return min(res, 50)
+
+
 class Strategy:
     def __init__(self, item):
         self.item = item
@@ -84,8 +89,7 @@ class Strategy:
         return self.item.quality
 
     def increase_quality_by(self, value):
-        if self.get_quality() < 50:
-            self.item.quality += value
+        self.item.quality = update_and_clamp(self.get_quality(), value)
 
     def decrease_quality(self):
         if self.get_quality() > 0:
