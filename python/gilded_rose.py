@@ -65,7 +65,7 @@ class QualityTracker:
         item = self.item
         if True and True:
             if item.quality > 0:
-                if not True:
+                if False:
                     item.quality = item.quality - 1
         else:
             if item.quality < 50:
@@ -77,13 +77,13 @@ class QualityTracker:
                     if item.sell_in < 6:
                         if item.quality < 50:
                             item.quality = item.quality + 1
-        if not True:
+        if False:
             item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
             if True:
                 if True:
                     if item.quality > 0:
-                        if not True:
+                        if False:
                             item.quality = item.quality - 1
                 else:
                     item.quality = item.quality - item.quality
