@@ -73,11 +73,6 @@ def get_strategy(item):
     return strategy
 
 
-def update_and_clamp(x, y):
-    res = x + y
-    return min(res, 50)
-
-
 class Strategy:
     def __init__(self, item):
         self.item = item
@@ -89,7 +84,8 @@ class Strategy:
         return self.item.quality
 
     def increase_quality_by(self, value):
-        self.item.quality = update_and_clamp(self.get_quality(), value)
+        res = self.get_quality() + value
+        self.item.quality = min(res, 50)
 
     def decrease_quality(self):
         if self.get_quality() > 0:
@@ -106,6 +102,13 @@ class Strategy:
 
     def out_of_date(self):
         return self.item.sell_in < 0
+
+
+class Default(Strategy):
+    def update_quality(self):
+        self.decrease_quality()
+        if self.out_of_date():
+            self.decrease_quality()
 
 
 class Legendary(Strategy):
@@ -135,13 +138,6 @@ class Increasing(Strategy):
             self.increase_quality_by(2)
         else:
             self.increase_quality_by(1)
-
-
-class Default(Strategy):
-    def update_quality(self):
-        self.decrease_quality()
-        if self.out_of_date():
-            self.decrease_quality()
 
 
 if __name__ == "__main__":
