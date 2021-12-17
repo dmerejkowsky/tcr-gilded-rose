@@ -82,11 +82,7 @@ class QualityTracker:
                     item.quality = item.quality + 1
         item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
-            if True:
-                item.quality = item.quality - item.quality
-            else:
-                if item.quality < 50:
-                    item.quality = item.quality + 1
+            item.quality = item.quality - item.quality
 
     def handle_other(self):
         item = self.item
