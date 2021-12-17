@@ -82,6 +82,9 @@ class Strategy:
     def update_quality(self, increment):
         self.item.quality += increment
 
+    def decrease_quality(self):
+        self.item.quality -= 1
+
     def update_quality_but_below_fifty(self):
         if self.get_quality() < 50:
             self.update_quality(+1)
@@ -121,7 +124,7 @@ class Default(Strategy):
     def run(self):
         item = self.item
         if self.get_quality() > 0:
-            self.update_quality(-1)
+            self.decrease_quality()
         item.sell_in -= 1
         if item.sell_in < 0:
             if self.get_quality() > 0:
