@@ -71,7 +71,7 @@ class QualityTracker:
         item = self.item
         if not self.increases_over_time() and not self.is_backstage_pass():
             if item.quality > 0:
-                if not False:
+                if True:
                     item.quality = item.quality - 1
         else:
             if item.quality < 50:
@@ -83,13 +83,13 @@ class QualityTracker:
                     if item.sell_in < 6:
                         if item.quality < 50:
                             item.quality = item.quality + 1
-        if not False:
+        if True:
             item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
             if not self.increases_over_time():
                 if not self.is_backstage_pass():
                     if item.quality > 0:
-                        if not False:
+                        if True:
                             item.quality = item.quality - 1
                 else:
                     item.quality = item.quality - item.quality
