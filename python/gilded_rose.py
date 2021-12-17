@@ -55,6 +55,10 @@ def is_legendary(item):
     return "Sulfuras" in item.name
 
 
+def is_conjured(item):
+    return "conjured" in item.name.lower()
+
+
 def increases_over_time(item):
     # Note: more items may be increase quality over time, but for the moment we only
     # know about this one
@@ -64,6 +68,8 @@ def increases_over_time(item):
 def get_strategy(item):
     if is_legendary(item):
         strategy = Legendary(item)
+    elif is_conjured(item):
+        strategy = Conjured(item)
     elif is_backstage_pass(item):
         strategy = BackstagePass(item)
     elif increases_over_time(item):
@@ -87,9 +93,9 @@ class Strategy:
         res = self.get_quality() + value
         self.item.quality = min(res, 50)
 
-    def decrease_quality(self):
-        if self.get_quality() > 0:
-            self.item.quality -= 1
+    def decrease_quality_by(self, value):
+        res = self.get_quality() - value
+        self.item.quality = max(res, 0)
 
     def reset_quality(self):
         self.item.quality = 0
@@ -106,9 +112,15 @@ class Strategy:
 
 class Default(Strategy):
     def update_quality(self):
-        self.decrease_quality()
         if self.out_of_date():
-            self.decrease_quality()
+            self.decrease_quality_by(2)
+        else:
+            self.decrease_quality_by(1)
+
+
+class Conjured(Strategy):
+    def update_quality(self):
+        self.decrease_quality_by(2)
 
 
 class Legendary(Strategy):
