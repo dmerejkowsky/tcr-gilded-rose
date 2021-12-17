@@ -115,7 +115,6 @@ class Legendary(Strategy):
 
 class BackstagePass(Strategy):
     def update_quality(self):
-        item = self.item
         self.increase_quality()
         if self.less_than_ten_days():
             self.increase_quality()
@@ -127,7 +126,6 @@ class BackstagePass(Strategy):
 
 class IncreasesOverTime(Strategy):
     def update_quality(self):
-        item = self.item
         self.increase_quality()
         if self.out_of_date():
             self.increase_quality()
@@ -135,7 +133,6 @@ class IncreasesOverTime(Strategy):
 
 class Default(Strategy):
     def update_quality(self):
-        item = self.item
         self.decrease_quality()
         if self.out_of_date():
             self.decrease_quality()
