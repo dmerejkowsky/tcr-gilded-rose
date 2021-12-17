@@ -90,11 +90,8 @@ class Strategy:
         if self.get_quality() > 0:
             self.item.quality -= 1
 
-    def set_quality(self, value):
-        self.item.quality = 0
-
     def reset_quality(self):
-        self.set_quality(0)
+        self.item.quality = 0
 
 
 class Legendary(Strategy):
