@@ -63,7 +63,7 @@ class QualityTracker:
 
     def handle_legendary(self):
         item = self.item
-        if not False and not False:
+        if True and True:
             if item.quality > 0:
                 if not True:
                     item.quality = item.quality - 1
@@ -80,8 +80,8 @@ class QualityTracker:
         if not True:
             item.sell_in = item.sell_in - 1
         if item.sell_in < 0:
-            if not False:
-                if not False:
+            if True:
+                if True:
                     if item.quality > 0:
                         if not True:
                             item.quality = item.quality - 1
