@@ -52,7 +52,7 @@ def get_strategy(item):
     elif "Backstage pass" in item.name:
         return BackstagePass(item)
     elif "Aged Brie" in item.name:
-        return Increasing(item)
+        return Cheese(item)
     else:
         return Default(item)
 
@@ -135,7 +135,7 @@ class BackstagePass(Strategy):
         self.item.sell_in -= 1
 
 
-class Increasing(Strategy):
+class Cheese(Strategy):
     def update_quality(self):
         if self.out_of_date():
             self.increase_quality_by(2)
