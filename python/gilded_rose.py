@@ -43,7 +43,7 @@ class GildedRose:
         for item in self.items:
             cls = get_strategy(item)
             strategy = cls(item)
-            strategy.age()
+            strategy.update_sell_in()
             strategy.update_quality()
 
 
@@ -69,7 +69,7 @@ class Strategy(metaclass=ABCMeta):
     def update_quality(self):
         pass
 
-    def age(self):
+    def update_sell_in(self):
         self.item.sell_in -= 1
 
     def get_quality(self):
@@ -113,8 +113,8 @@ class Legendary(Strategy):
     def update_quality(self):
         pass
 
-    def age(self):
-        # Note: override default aging method
+    def update_sell_in(self):
+        # Note: override default update_sell_in method
         pass
 
 
