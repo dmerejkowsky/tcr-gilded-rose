@@ -39,24 +39,22 @@ class GildedRose:
 
     def update_items(self):
         for item in self.items:
-            cls = get_strategy(item)
-            strategy = cls(item)
+            strategy = get_strategy(item)
             strategy.update_sell_in()
             strategy.update_quality()
 
 
 def get_strategy(item):
     if "Sulfuras" in item.name:
-        strategy = Legendary
+        return Legendary(item)
     elif "conjured" in item.name.lower():
-        strategy = Conjured
+        return Conjured(item)
     elif "Backstage pass" in item.name:
-        strategy = BackstagePass
+        return BackstagePass(item)
     elif "Aged Brie" in item.name:
-        strategy = Increasing
+        return Increasing(item)
     else:
-        strategy = Default
-    return strategy
+        return Default(item)
 
 
 class Strategy(metaclass=ABCMeta):
