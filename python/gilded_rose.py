@@ -65,8 +65,9 @@ class Strategy(metaclass=ABCMeta):
     def update_quality(self):
         pass
 
+    @abstractmethod
     def update_sell_in(self):
-        self.item.sell_in -= 1
+        pass
 
     def get_quality(self):
         return self.item.quality
@@ -99,10 +100,16 @@ class Default(Strategy):
         else:
             self.decrease_quality_by(1)
 
+    def update_sell_in(self):
+        self.item.sell_in -= 1
+
 
 class Conjured(Strategy):
     def update_quality(self):
         self.decrease_quality_by(2)
+
+    def update_sell_in(self):
+        self.item.sell_in -= 1
 
 
 class Legendary(Strategy):
@@ -110,7 +117,6 @@ class Legendary(Strategy):
         pass
 
     def update_sell_in(self):
-        # Note: override default update_sell_in method
         pass
 
 
@@ -125,6 +131,9 @@ class BackstagePass(Strategy):
         else:
             self.increase_quality_by(1)
 
+    def update_sell_in(self):
+        self.item.sell_in -= 1
+
 
 class Increasing(Strategy):
     def update_quality(self):
@@ -132,6 +141,9 @@ class Increasing(Strategy):
             self.increase_quality_by(2)
         else:
             self.increase_quality_by(1)
+
+    def update_sell_in(self):
+        self.item.sell_in -= 1
 
 
 if __name__ == "__main__":
