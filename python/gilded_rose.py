@@ -32,16 +32,14 @@ def main():
         for item in items:
             print(item)
         print("")
-        gilded_rose.update_quality()
+        gilded_rose.update_items()
 
 
 class GildedRose:
     def __init__(self, items):
         self.items = items
 
-    # /!\ Do not change code above this line /!\ #
-
-    def update_quality(self):
+    def update_items(self):
         for item in self.items:
             cls = get_strategy(item)
             strategy = cls(item)
