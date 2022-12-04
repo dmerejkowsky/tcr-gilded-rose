@@ -60,6 +60,7 @@ def get_strategy(item):
         strategy = Increasing
     else:
         strategy = Default
+    return strategy
 
 
 class Strategy(metaclass=ABCMeta):
