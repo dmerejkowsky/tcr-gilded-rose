@@ -1,3 +1,6 @@
+from abc import ABCMeta, abstractmethod
+
+
 class Item:
     def __init__(self, name, sell_in, quality):
         self.name = name
@@ -59,9 +62,13 @@ def get_strategy(item):
         strategy = Default
 
 
-class Strategy:
+class Strategy(metaclass=ABCMeta):
     def __init__(self, item):
         self.item = item
+
+    @abstractmethod
+    def update_quality(self):
+        pass
 
     def age(self):
         self.item.sell_in -= 1
